@@ -27,9 +27,21 @@ func NewCli(manager *task.Manager, storage storage.TaskStorage) *Cli {
 func (c *Cli) Run() {
 	fmt.Println("================")
 	fmt.Println()
-	fmt.Println("Task<br>eaker")
+
+	fmt.Println(" _            _                           ")
+	fmt.Println("| |_ __ _ ___| | __                       ")
+	fmt.Println("| __/ _` / __| |/ /                       ")
+	fmt.Println(`| || (_| \__ \   <                        `)
+	fmt.Println(` \__\__,_|___/_|\_\         _             `)
+	fmt.Println(` / / |__  _ _\ \  ___  __ _| | _____ _ __ `)
+	fmt.Println(`/ /| '_ \| '__\ \/ _ \/ _ '| |/ / _ \ '__|`)
+	fmt.Println(`\ \| |_) | |  / /  __/ (_| |   <  __/ |   `)
+	fmt.Println(` \_\_.__/|_| /_/ \___|\__,_|_|\_\___|_|   `)
+
+	fmt.Println()
+	fmt.Println("task<br>eaker")
 	fmt.Println("Some motivational motto about getting your things done.")
-	fmt.Println("by temaelkin, 2025, v.1.0.0")
+	fmt.Println("temaelkin, 2026, v.1.0.0")
 	fmt.Println()
 	fmt.Println("================")
 
@@ -103,7 +115,9 @@ func (c *Cli) cmdDone(args []string) {
 		return
 	}
 
-	fmt.Println("Marked as done")
+	fmt.Println("Marked as done:", query)
+	fmt.Println("Anything else?")
+	fmt.Println()
 }
 
 func (c *Cli) cmdAll() {
@@ -120,6 +134,7 @@ func (c *Cli) cmdAll() {
 			fmt.Println(t.Name, "❌")
 		}
 	}
+	fmt.Println()
 }
 
 func (c *Cli) cmdSave() {
@@ -129,6 +144,7 @@ func (c *Cli) cmdSave() {
 		return
 	}
 	fmt.Println("Saved!")
+	fmt.Println()
 }
 
 func (c *Cli) cmdExit() {
@@ -142,6 +158,7 @@ func (c *Cli) cmdExit() {
 func (c *Cli) cmdHelp() {
 	fmt.Println("This is a little task-tracker for a busy fella like you!")
 	fmt.Println("It is pretty easy to use.")
+	fmt.Println()
 	fmt.Println("Here are the commands:")
 	fmt.Println("add <task> - if you want to create a new task.")
 	fmt.Println("done <task> - if you did something.")
