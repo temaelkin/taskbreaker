@@ -3,7 +3,7 @@ package task
 import "strings"
 
 func find(tasks []Task, query string) int {
-	queryWords := strings.Fields(query)
+	queryWords := strings.Fields(strings.ToLower(query))
 
 	for i, t := range tasks {
 		name := strings.ToLower(t.Name)
