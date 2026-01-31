@@ -74,6 +74,8 @@ func (c *Cli) handle(input string) {
 		c.cmdAdd(args)
 	case "done":
 		c.cmdDone(args)
+	case "del":
+		c.cmdDel(args)
 	case "all":
 		c.cmdAll()
 	case "save":
@@ -120,6 +122,24 @@ func (c *Cli) cmdDone(args []string) {
 	fmt.Println()
 }
 
+func (c *Cli) cmdDel(args []string) {
+	if len(args) == 0 {
+		fmt.Println("Usage: del <task name>")
+		return
+	}
+
+	query := strings.Join(args, " ")
+	err := c.manager.Delete(query)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println("Deleted:", query)
+	fmt.Println("Anything else?")
+	fmt.Println()
+}
+
 func (c *Cli) cmdAll() {
 	tasks := c.manager.All()
 	if len(tasks) == 0 {
@@ -162,6 +182,7 @@ func (c *Cli) cmdHelp() {
 	fmt.Println("Here are the commands:")
 	fmt.Println("add <task> - if you want to create a new task.")
 	fmt.Println("done <task> - if you did something.")
+	fmt.Println("del <task> - if you need to delete a task.")
 	fmt.Println("all - if you want to see all your tasks.")
 	fmt.Println("save - if you need to save your tasks.")
 	fmt.Println("exit - if you want to save your tasks & leave.")

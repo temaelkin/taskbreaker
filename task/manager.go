@@ -26,3 +26,13 @@ func (m *Manager) Done(query string) error {
 	m.tasks[index].MarkDone()
 	return nil
 }
+
+func (m *Manager) Delete(query string) error {
+	index := find(m.tasks, query)
+	if index == -1 {
+		return errors.New("Not found")
+	}
+
+	m.tasks = append(m.tasks[:index], m.tasks[index+1:]...)
+	return nil
+}
